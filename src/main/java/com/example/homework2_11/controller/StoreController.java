@@ -1,5 +1,6 @@
 package com.example.homework2_11.controller;
 
+import com.example.homework2_11.entity.Item;
 import com.example.homework2_11.service.StoreService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +19,13 @@ public class StoreController {
     }
 
     @GetMapping("/add")
-    public String addOrder(@RequestParam Integer... productID){
-        storeService.addOrder(List.of(productID));
+    public String addOrder(@RequestParam List<Integer> ids){
+        storeService.addOrder(ids);
         return "Products added";
     }
 
     @GetMapping("/get")
-    public List<Integer> getOrder(){
+    public List<Item> getOrder(){
         return storeService.getOrder();
     }
 }
